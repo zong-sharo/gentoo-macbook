@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting macfanctld"
+	start-stop-daemon --start --exec /usr/sbin/macfanctld --pidfile /var/run/macfanctld.pid --make-pidfile 
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping macfanctld"
+	start-stop-daemon --stop --exec /usr/sbin/macfanctld --pidfile /var/run/macfanctld.pid
+	eend $?
+}
