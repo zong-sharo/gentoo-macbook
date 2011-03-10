@@ -12,7 +12,7 @@ EBZR_REVISION="revid:mikael@sesamiq.com-20101106105803-7ni76wp89kr6mwef"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
