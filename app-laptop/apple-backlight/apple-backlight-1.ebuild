@@ -1,14 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
-
-#inherit git
+# Distributed under the terms of the BSD3 license
 
 EAPI=3
 
 DESCRIPTION="intel macbook backlight control userspace tool"
 HOMEPAGE="https://github.com/zong-sharo/apple-backlight"
-#EGIT_REPO_URI="git://github.com/zong-sharo/apple-backlight.git"
 
 LICENSE=""
 SLOT="0"

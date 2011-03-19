@@ -1,6 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# Distributed under the terms of the BSD3 license
 
 inherit bzr linux-info
 EAPI=3
