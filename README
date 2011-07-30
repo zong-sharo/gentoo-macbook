@@ -3,3 +3,4 @@ unless otherwise stated all files is licensed under BSD3
 
 license of apple-backlight-1.cpp from app-laptop/apple-backlight/files/ is unknown.
 found it on http://ubuntuforums.org/showpost.php?p=10222928&postcount=18
+to my knowledge, it's the most simple and reliable way to do gmux-based backlight control
