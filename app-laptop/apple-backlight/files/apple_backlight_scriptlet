@@ -15,7 +15,8 @@ AppleBacklightOptions() {
                 intel|nvidia|gmux)
                     APPLE_BACKLIGHT_INTERFACE="$2"
                     AddSuspendHook 11 AppleBacklightSave
-                    AddResumeHook 11 AppleBacklightRestore
+		    # just right before slow tasks (net, etc)
+                    AddResumeHook 31 AppleBacklightRestore
                     return 0
                     ;;
                 *)
