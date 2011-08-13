@@ -1,0 +1,40 @@
+AddConfigHandler AppleBacklightOptions
+AddConfigHelp "EnableAppleBacklight <intel|nvidia|gmux>" "Save and restore backlight using apple-backlight before and after suspending, you must choose which interface to use to do so."
+
+APPLE_BACKLIGHT_INTERFACE=
+APPLE_BACKLIGHT_BRIGHTNESS=
+
+AppleBacklightOptions() {
+    case $1 in
+        enableapplebacklight)
+            if [ ! -x "$(command -v apple-backlight)" ];then
+                vecho 1 "apple-backlight not found, disabling backlight save/restore"
+                return 0
+            fi
+            case $2 in
+                intel|nvidia|gmux)
+                    APPLE_BACKLIGHT_INTERFACE="$2"
+                    AddSuspendHook 11 AppleBacklightSave
+                    AddResumeHook 11 AppleBacklightRestore
+                    return 0
+                    ;;
+                *)
+                    vecho 1 "unknown interface \"$2\""
+                    return 0
+                    ;;
+            esac
+            ;;
+        *)
+            return 1
+    esac
+}
+
+AppleBacklightSave() {
+    APPLE_BACKLIGHT_BRIGHTNESS=`apple-backlight --${APPLE_BACKLIGHT_INTERFACE} -g | sed -n 's/current brightness: \([0-9]\+\)/\1/p'`
+    return $(($?!=0))
+}
+
+AppleBacklightRestore() {
+    apple-backlight --${APPLE_BACKLIGHT_INTERFACE} -s ${APPLE_BACKLIGHT_BRIGHTNESS} &> /dev/null
+    return $(($?!=0))
+}
